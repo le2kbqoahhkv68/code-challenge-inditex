@@ -62,6 +62,14 @@ Post processing is in charge of:
 - Adding polyfills for older browsers.
 - Minifying CSS files.
 
+### Craco
+
+Craco is used for overriding configuration, specially Webpack's. See [configuration file](src/craco.config.js).
+
+- '@' alias points to 'src'.
+
+Notice in the package.json, that scripts are being execute from craco, instead of react-scripts.
+
 ## Notes
 
 ### Error boundaries
@@ -87,3 +95,5 @@ Another way to split a module is by the main resource which points to: / (that c
 ### Routes
 
 All routes from modules are imported within routes.js file. I prefer to keep them in a separated file.
+
+Route components are **loaded lazily**, increasing the load speed without unnecesary imports until they are.
