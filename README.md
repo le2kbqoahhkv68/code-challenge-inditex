@@ -75,3 +75,15 @@ ErrorBoundary component is defined to wrap any component which needs to handle e
 ```
 
 In development mode, the error will be shown. It has been tested that it doesn't happen in production mode.
+
+### Modules
+
+The code challenge doesn't require a complex scaffold, so the meaning of module here is a feature or container which groups components that can't have sense being alone, has routes / nested routes, etc.
+
+In that case, I'm considering the module PODCAST uniquely which includes nested views. In case of creating a new module, it'd have the same structure.
+
+Another way to split a module is by the main resource which points to: / (that could be /podcast), /podcast/{podcastId}, /podcast/{podcastId}/episode/{episodeId}.
+
+### Routes
+
+All routes from modules are imported within routes.js file. I prefer to keep them in a separated file.
