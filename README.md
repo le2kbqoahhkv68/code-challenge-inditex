@@ -39,3 +39,4 @@ Runs prettier for JavaScript, styles and md files.
 - [Github release notes](https://github-tools.github.io/github-release-notes) for CHANGELOG.md management. The package is connected directly to the repository via scope token. [See configuration file](/.grenrc).
 - [Husky](https://typicode.github.io/husky/) for Git hooks.
 - [Prettier](https://prettier.io/) for code formatting, integrated within Husky Git hooks. It has been also set as npm script `npm run prettier`.
+- [Source map explorer](https://www.npmjs.com/package/source-map-explorer) for analyzing bundle output.
