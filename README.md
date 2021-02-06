@@ -61,3 +61,17 @@ Post processing is in charge of:
 - Adding vendor prefixes.
 - Adding polyfills for older browsers.
 - Minifying CSS files.
+
+## Notes
+
+### Error boundaries
+
+ErrorBoundary component is defined to wrap any component which needs to handle errors instead of broking the interface, i.e.:
+
+```
+<ErrorBoundary>
+  <YourComponent />
+</ErrorBounday>
+```
+
+In development mode, the error will be shown. It has been tested that it doesn't happen in production mode.
