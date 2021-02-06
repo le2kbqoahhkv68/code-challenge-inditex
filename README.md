@@ -33,10 +33,20 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Runs prettier for JavaScript, styles and md files.
 
-## Relevant tools
+## Relevant tools and packages
 
 - VS-Code Gitflow plugin.
 - [Github release notes](https://github-tools.github.io/github-release-notes) for CHANGELOG.md management. The package is connected directly to the repository via scope token. [See configuration file](/.grenrc).
 - [Husky](https://typicode.github.io/husky/) for Git hooks.
 - [Prettier](https://prettier.io/) for code formatting, integrated within Husky Git hooks. It has been also set as npm script `npm run prettier`.
 - [Source map explorer](https://www.npmjs.com/package/source-map-explorer) for analyzing bundle output.
+- [node-sass](https://www.npmjs.com/package/node-sass) for using SASS instead of plain CSS.
+
+## Styling
+
+Styles files are placed within _src/assets/styles/_. You'll notice that the files are splitted in two different folders:
+
+- _vars_ for SCSS variables.
+- _app_ for rest of purposes.
+
+Both are imported with a barrier file within the App.js file to be available from anywhere.
