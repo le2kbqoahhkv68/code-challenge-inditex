@@ -29,8 +29,13 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run prettier`
+
+Runs prettier for JavaScript, styles and md files.
 
 ## Relevant tools
 
 - VS-Code Gitflow plugin.
 - [Github release notes](https://github-tools.github.io/github-release-notes) for CHANGELOG.md management. The package is connected directly to the repository via scope token. [See configuration file](/.grenrc).
+- [Husky](https://typicode.github.io/husky/) for Git hooks.
+- [Prettier](https://prettier.io/) for code formatting, integrated within Husky Git hooks. It has been also set as npm script `npm run prettier`.
