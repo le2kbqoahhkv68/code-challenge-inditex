@@ -44,9 +44,19 @@ Runs prettier for JavaScript, styles and md files.
 
 ## Styling
 
+### Folders
+
 Styles files are placed within _src/assets/styles/_. You'll notice that the files are splitted in two different folders:
 
 - _vars_ for SCSS variables.
 - _app_ for rest of purposes.
 
 Both are imported with a barrier file within the App.js file to be available from anywhere.
+
+### Post-Processing CSS
+
+Post processing is in charge of:
+
+- Adding vendor prefixes.
+- Adding polyfills for older browsers.
+- Minifying CSS files.
