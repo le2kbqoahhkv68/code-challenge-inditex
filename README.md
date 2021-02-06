@@ -41,6 +41,7 @@ Runs prettier for JavaScript, styles and md files.
 - [Prettier](https://prettier.io/) for code formatting, integrated within Husky Git hooks. It has been also set as npm script `npm run prettier`.
 - [Source map explorer](https://www.npmjs.com/package/source-map-explorer) for analyzing bundle output.
 - [node-sass](https://www.npmjs.com/package/node-sass) for using SASS instead of plain CSS.
+- [axios](https://github.com/axios/axios) for network request management.
 
 ## Styling
 
