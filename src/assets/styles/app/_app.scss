@@ -1,7 +1,15 @@
 html,
-body,
-* {
-  font-family: "Roboto";
+body {
+  font-family: "SourceSansPro";
   font-size: 16px;
   font-weight: 400;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
+}
+
+.App {
+  padding: 2rem;
 }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { routes } from "../routes";
 
 /** Global styles */
-import "@/assets/styles/index.scss";
+import "@/assets/styles/app/index.scss";
 
 /** Components */
 import { ErrorBoundary } from "../components/ErrorBoundary/ErrorBoundary.js";
@@ -12,13 +12,12 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <div className="App">
-          <h1>App!</h1>
+        <section className="App">
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              {routes.map((route, index) => (
+              {routes.map((route) => (
                 <Route
-                  key={index}
+                  key={route.name}
                   path={route.path}
                   exact={route.exact}
                   component={route.component}
@@ -26,7 +25,7 @@ function App() {
               ))}
             </Switch>
           </Suspense>
-        </div>
+        </section>
       </Router>
     </ErrorBoundary>
   );

@@ -3,4 +3,5 @@
   "settings": {},
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "scss.lint.unknownAtRules": "ignore"
 }
