@@ -1,4 +1,6 @@
-import { PodcastsView } from "./Podcasts/Podcasts";
+import { lazy } from "react";
+
+const PodcastsView = lazy(() => import("./Podcasts/Podcasts"));
 
 /**
  * modules / Podcast / routes
