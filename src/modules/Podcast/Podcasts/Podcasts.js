@@ -22,8 +22,6 @@ export default class PodcastsView extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <section className="podcasts">
         <header className="podcasts__header">

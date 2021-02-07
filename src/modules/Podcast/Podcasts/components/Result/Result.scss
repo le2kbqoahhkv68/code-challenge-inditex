@@ -7,6 +7,18 @@
   justify-content: space-between;
   width: 100%;
 
+  &:hover {
+    cursor: pointer;
+
+    .result__img {
+      transform: scale(1.1);
+    }
+
+    .result__description {
+      box-shadow: rgba($color-black-02, 0.5) 0px 2px 8px 0px;
+    }
+  }
+
   &__img {
     background-color: $color-white;
     border-radius: 100%;
@@ -17,6 +29,7 @@
     min-width: $imgSize;
     object-fit: cover;
     position: absolute;
+    transition: transform $duration-base;
   }
 
   &__title,
@@ -54,6 +67,7 @@
     padding: 1.5em;
     text-align: center;
     width: 100%;
+    transition: box-shadow $duration-base;
   }
 
   &__title,
