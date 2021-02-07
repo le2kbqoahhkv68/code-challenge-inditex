@@ -17,13 +17,13 @@
   &__results {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin: 0 -1em;
   }
 
   &__result {
     flex: 1;
-    min-width: calc(25% - 2em);
+    max-width: calc(25% - 2em);
     margin: 2em 1em;
   }
 }

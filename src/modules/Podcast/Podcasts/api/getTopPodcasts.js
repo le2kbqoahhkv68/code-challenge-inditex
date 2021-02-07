@@ -3,6 +3,8 @@ import axios from "axios";
 /**
  * This function could be considered as an adaptar between the backend and the
  * frontend.
+ *
+ * In this case I am not taking care of null or undefined
  */
 const getTopPodcasts = function () {
   return axios({
@@ -12,9 +14,9 @@ const getTopPodcasts = function () {
   }).then(({ data }) =>
     data.feed.entry.map((e) => {
       return {
-        title: e.title,
-        author: e["im:artist"],
-        img: e["im:image"][0].label,
+        title: e?.title?.label || "",
+        author: e["im:artist"]?.label || "",
+        img: e["im:image"][2]?.label || "",
       };
     })
   );

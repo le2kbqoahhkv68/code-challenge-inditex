@@ -2,7 +2,6 @@ import React from "react";
 import "./Podcasts.scss";
 import { Result } from "./components/Result/Result";
 import getTopPodcasts from "./api/getTopPodcasts";
-import axios from "axios";
 
 /**
  * View responsible to get podcasts and also lets you to filter them.
@@ -10,18 +9,21 @@ import axios from "axios";
 export default class PodcastsView extends React.Component {
   constructor(props) {
     super(props);
-    this.isLoaded = false;
-    this.topPodcasts = [];
+    this.state = {
+      isLoaded: false,
+      topPodcasts: [],
+    };
   }
 
   async componentDidMount() {
     await getTopPodcasts().then((topPodcasts) => {
-      this.setState({ isLoaded: true });
-      this.setState({ topPodcasts: topPodcasts });
+      this.setState({ isLoaded: true, topPodcasts });
     });
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <section className="podcasts">
         <header className="podcasts__header">
@@ -29,9 +31,14 @@ export default class PodcastsView extends React.Component {
         </header>
         <ul className="podcasts__results">
           {this.state &&
-            this.state.topPodcasts &&
             this.state.topPodcasts.map((topPodcast) => (
-              <div>{topPodcast.title}</div>
+              <li className="podcasts__result">
+                <Result
+                  title={topPodcast.title}
+                  author={topPodcast.author}
+                  img={topPodcast.img}
+                />
+              </li>
             ))}
         </ul>
       </section>
