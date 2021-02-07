@@ -11,7 +11,10 @@ module.exports = {
     {
       plugin: sassResourcesLoader,
       options: {
-        resources: "./src/assets/styles/vars/colors.scss",
+        resources: [
+          "./src/assets/styles/vars/colors.scss",
+          "./src/assets/styles/vars/border.scss",
+        ],
       },
     },
   ],

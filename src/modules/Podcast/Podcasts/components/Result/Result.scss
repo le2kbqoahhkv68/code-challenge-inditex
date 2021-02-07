@@ -1,0 +1,67 @@
+.result {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  justify-content: space-between;
+  width: 100%;
+
+  &__img {
+    $imgSize: 150px;
+    background-color: $color-white;
+    border-radius: 100%;
+    border: 1px solid $color-black-03;
+    max-height: $imgSize;
+    max-width: $imgSize;
+    min-height: $imgSize;
+    min-width: $imgSize;
+    object-fit: cover;
+    position: absolute;
+  }
+
+  &__title,
+  &__author {
+    font-size: 1.5em;
+    max-width: 300px;
+  }
+
+  &__title,
+  &__author-name {
+    text-transform: uppercase;
+  }
+
+  &__title {
+    color: $color-black-02;
+    font-weight: 500;
+  }
+
+  &__author {
+    color: $color-black-03;
+    font-weight: 400;
+    margin-top: 0.25em;
+  }
+
+  &__description {
+    display: flex;
+    background-color: $color-white;
+    border-radius: $border-radius-default;
+    box-sizing: border-box;
+    box-shadow: rgba($color-black-02, 0.2) 0px 2px 8px 0px;
+    flex-direction: column;
+    height: 200px;
+    justify-content: flex-end;
+    margin-top: 60px;
+    padding: 1.5em;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__title,
+  &__author-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    max-width: 100%;
+  }
+}

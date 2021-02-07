@@ -4,6 +4,7 @@
   &__header {
     border-bottom: 1px solid $color-black-01;
     padding: 0.75em 0;
+    margin-bottom: 2em;
   }
 
   &__title {
@@ -11,5 +12,18 @@
     font-size: 2em;
     font-weight: 500;
     margin: 0;
+  }
+
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -1em;
+  }
+
+  &__result {
+    flex: 1;
+    min-width: calc(25% - 2em);
+    margin: 2em 1em;
   }
 }
