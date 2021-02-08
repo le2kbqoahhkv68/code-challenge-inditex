@@ -9,10 +9,9 @@ import axios from "axios";
  */
 const getTopPodcasts = function () {
   return axios
-    .get({
-      url:
-        "https://itunes.apple.com/us/rss/toppodcasts/limit=101/genre=1310/json",
-    })
+    .get(
+      "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
+    )
     .then(({ data }) =>
       data?.feed?.entry.map((e) => {
         return {
