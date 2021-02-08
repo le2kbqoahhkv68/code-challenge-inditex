@@ -1,0 +1,61 @@
+.podcasts {
+  font-size: 1rem;
+
+  &__header {
+    border-bottom: 1px solid $color-black-01;
+    padding: 0.75em 0;
+    margin-bottom: 2em;
+  }
+
+  &__title {
+    color: $color-blue;
+    font-size: 2em;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 -1em;
+  }
+
+  &__result {
+    flex: 1;
+    max-width: calc(25% - 2em);
+    margin: 2em 1em;
+  }
+
+  &__filter {
+    text-align: right;
+
+    * ~ * {
+      margin-left: 1em;
+    }
+  }
+
+  &__count {
+    background-color: $color-blue;
+    border-radius: $border-radius-default;
+    color: $color-white;
+    font-size: 1.25em;
+    font-weight: 500;
+    line-height: 30px;
+    padding: 0.2em;
+    vertical-align: middle;
+    margin-top: 0.5em;
+  }
+
+  &__search-box {
+    border: 1px solid $color-black-01;
+    border-radius: $border-radius-default;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    width: 250px;
+
+    &::placeholder {
+      color: $color-black-03;
+    }
+  }
+}
