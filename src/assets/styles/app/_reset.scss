@@ -11,3 +11,12 @@ ul {
 p {
   margin: 0;
 }
+
+input {
+  transition: border-color $duration-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-blue;
+  }
+}
