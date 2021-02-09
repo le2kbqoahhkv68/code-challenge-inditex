@@ -16,7 +16,7 @@ const routes = [
   {
     path: "/podcast/:podcastId",
     name: "Podcast",
-    exact: false,
+    exact: true,
     component: PodcastView,
   },
 ];

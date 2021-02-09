@@ -1,8 +1,8 @@
 import React from "react";
 import "./Podcasts.scss";
 import { Result } from "./components/Result/Result";
-import getTopPodcasts from "./api/getTopPodcasts";
-import { Link } from "react-router-dom";
+import { getTopPodcasts } from "../api/apiTopPodcasts";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 /**
  * View responsible of displaying a list of podcasts, top 100 by default, and filter
@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
  * @property {string} topPodcasts[].title Podcast title.
  * @property {string} topPodcasts[].author Podcast author.
  * @property {string} topPodcasts[].img Podcast img url.
+ * @property {string} topPodcasts[].summary Podcast summary.
  * @property {string} filter Input filter value.
  */
 export default class PodcastsView extends React.Component {
@@ -102,13 +103,13 @@ export default class PodcastsView extends React.Component {
         <ul className="podcasts__results">
           {filteredPodcasts.map((topPodcast) => (
             <li className="podcasts__result" key={topPodcast.id}>
-              <Link to={`/podcast/${topPodcast.id}`}>
+              <a href={`/podcast/${topPodcast.id}`}>
                 <Result
                   title={topPodcast.title}
                   author={topPodcast.author}
                   img={topPodcast.img}
                 />
-              </Link>
+              </a>
             </li>
           ))}
         </ul>

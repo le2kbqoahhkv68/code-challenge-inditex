@@ -1,7 +1,7 @@
 import { act } from "react-dom/test-utils";
 import { render, unmountComponentAtNode } from "react-dom";
-import Podcasts from "./Podcasts";
-import getTopPodcastsStub from "./api/getTopPodcasts.stub";
+import Podcast from "./Podcast";
+import getTopPodcastsStub from "../api/stubs/getTopPodcasts.stub";
 import axios from "axios";
 
 let container = null;
@@ -20,45 +20,45 @@ afterEach(() => {
 jest.mock("axios");
 
 describe("Podcasts component test", () => {
-  it("renders related tags count correctly", async () => {
+  it("renders podcast info correctly", async () => {
     axios.get.mockImplementationOnce(() => Promise.resolve(getTopPodcastsStub));
-    let podcastsComponent;
 
     await act(async () => {
-      podcastsComponent = render(<Podcasts />, container);
-      expect(container.querySelector(".podcasts__count").textContent).toBe("0");
+      render(
+        <Podcast match={{ params: { podcastId: "788236947" } }} />,
+        container
+      );
     });
 
-    expect(container.querySelector(".podcasts__count").textContent).toBe("10");
+    expect(container.querySelector(".podcast__img").getAttribute("src")).toBe(
+      "https://is5-ssl.mzstatic.com/image/thumb/Podcasts114/v4/e0/46/bd/e046bd86-626c-cbc8-2c8c-1cc73d15f282/mza_9056037259982186445.png/170x170bb.png"
+    );
 
-    podcastsComponent.setState({ filter: "dolly" });
-    expect(container.querySelector(".podcasts__count").textContent).toBe("1");
+    expect(container.querySelector(".podcast__title").textContent).toBe(
+      "Song Exploder - Hrishikesh Hirway"
+    );
 
-    podcastsComponent.setState({ filter: "ll" });
-    expect(container.querySelector(".podcasts__count").textContent).toBe("4");
+    expect(container.querySelector(".podcast__author").textContent).toBe(
+      "by Hrishikesh Hirway"
+    );
 
-    podcastsComponent.setState({ filter: "asdf1234" });
-    expect(container.querySelector(".podcasts__count").textContent).toBe("0");
+    expect(container.querySelector(".podcast__desc").textContent).toBe(
+      "Song Exploder is a podcast where musicians take apart their songs, and piece by piece, tell the story of how they were made. Each episode features an artist discussing a song of theirs, breaking down the sounds and ideas that went into the writing and recording. Hosted and produced by Hrishikesh Hirway."
+    );
   });
 
-  it("renders related tags correctly", async () => {
+  it("renders not found message", async () => {
     axios.get.mockImplementationOnce(() => Promise.resolve(getTopPodcastsStub));
-    let podcastsComponent;
 
     await act(async () => {
-      podcastsComponent = render(<Podcasts />, container);
-      expect(container.querySelectorAll(".podcasts__result").length).toBe(0);
+      render(
+        <Podcast match={{ params: { podcastId: "fake123" } }} />,
+        container
+      );
     });
 
-    expect(container.querySelectorAll(".podcasts__result").length).toBe(10);
-
-    podcastsComponent.setState({ filter: "dolly" });
-    expect(container.querySelectorAll(".podcasts__result").length).toBe(1);
-
-    podcastsComponent.setState({ filter: "ll" });
-    expect(container.querySelectorAll(".podcasts__result").length).toBe(4);
-
-    podcastsComponent.setState({ filter: "asdf1234" });
-    expect(container.querySelectorAll(".podcasts__result").length).toBe(0);
+    expect(container.querySelector(".podcast__not-found").textContent).toBe(
+      "Podcast not found"
+    );
   });
 });

@@ -12,14 +12,14 @@ import { ErrorBoundary } from "../components/ErrorBoundary/ErrorBoundary.js";
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
-        <section className="App">
-          {/** Header */}
-          <header className="app__header">
-            <h1 className="app__title">Podcaster</h1>
-          </header>
+      <section className="App">
+        {/** Header */}
+        <header className="app__header">
+          <h1 className="app__title">Podcaster</h1>
+        </header>
 
-          {/** Routes */}
+        {/** Routes */}
+        <Router>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               {routes.map((route) => (
@@ -32,8 +32,8 @@ function App() {
               ))}
             </Switch>
           </Suspense>
-        </section>
-      </Router>
+        </Router>
+      </section>
     </ErrorBoundary>
   );
 }
