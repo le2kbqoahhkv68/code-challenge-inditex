@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import "./Podcast.scss";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { getTopPodcast } from "../api/apiTopPodcasts";
+
+const EpisodesView = lazy(() => import("./components/Episodes/Episodes"));
 
 /**
  * View responsible of displaying podcast detail.
@@ -56,13 +58,21 @@ export default class Podcast extends React.Component {
           </div>
         </article>
         <article className="podcast__route">
-          {/* <Switch>
-            <Route
-              exact
-              path={`/podcast/${this.props.match.params.podcastId}/episode`}
-              component={() => <p>olé!</p>}
-            />
-          </Switch> */}
+          <Router>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                <Route
+                  path="*"
+                  render={(props) => (
+                    <EpisodesView
+                      {...props}
+                      podcastId={this.state.podcast.id}
+                    />
+                  )}
+                />
+              </Switch>
+            </Suspense>
+          </Router>
         </article>
       </section>
     );

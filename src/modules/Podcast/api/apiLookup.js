@@ -10,9 +10,14 @@ import axios from "axios";
 const getLookup = function (podcastId) {
   return axios
     .get(`https://itunes.apple.com/lookup?id=${podcastId}`)
-    .then(({ results }) => ({
-      img: results?.artworkUrl60,
-      artistName: results.artistName,
+    .then(({ data: { resultCount, results } }) => ({
+      count: resultCount,
+      episodes: results.map((result) => ({
+        id: result.trackId,
+        title: result.trackCensoredName,
+        date: new Date(result.releaseDate),
+        duration: "12:32",
+      })),
     }));
 };
 
