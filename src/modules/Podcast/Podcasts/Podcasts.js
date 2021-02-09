@@ -2,6 +2,7 @@ import React from "react";
 import "./Podcasts.scss";
 import { Result } from "./components/Result/Result";
 import getTopPodcasts from "./api/getTopPodcasts";
+import { Link } from "react-router-dom";
 
 /**
  * View responsible of displaying a list of podcasts, top 100 by default, and filter
@@ -23,15 +24,6 @@ export default class PodcastsView extends React.Component {
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
-  }
-
-  /**
-   * It routes to podcast detail page.
-   *
-   * @param {string} podcastId
-   */
-  handlePodcastClick(podcastId) {
-    console.log(podcastId);
   }
 
   /**
@@ -94,11 +86,6 @@ export default class PodcastsView extends React.Component {
 
     return (
       <section className="podcasts">
-        {/** Header */}
-        <header className="podcasts__header">
-          <h1 className="podcasts__title">Podcaster</h1>
-        </header>
-
         {/** Filter */}
         <article className="podcasts__filter">
           <span className="podcasts__count">{filteredPodcasts.length}</span>
@@ -115,14 +102,13 @@ export default class PodcastsView extends React.Component {
         <ul className="podcasts__results">
           {filteredPodcasts.map((topPodcast) => (
             <li className="podcasts__result" key={topPodcast.id}>
-              <Result
-                title={topPodcast.title}
-                author={topPodcast.author}
-                img={topPodcast.img}
-                onClick={() => {
-                  this.handlePodcastClick(topPodcast.id);
-                }}
-              />
+              <Link to={`/podcast/${topPodcast.id}`}>
+                <Result
+                  title={topPodcast.title}
+                  author={topPodcast.author}
+                  img={topPodcast.img}
+                />
+              </Link>
             </li>
           ))}
         </ul>
