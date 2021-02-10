@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getAllOriginsUrl } from "@/utils/cors";
 
 /**
  * This function could be considered as an adaptar between the backend and
@@ -9,16 +10,8 @@ import axios from "axios";
  */
 const getLookup = function (podcastId) {
   return axios
-    .get(`https://itunes.apple.com/lookup?id=${podcastId}`)
-    .then(({ data: { resultCount, results } }) => ({
-      count: resultCount,
-      episodes: results.map((result) => ({
-        id: result.trackId,
-        title: result.trackCensoredName,
-        date: new Date(result.releaseDate),
-        duration: "12:32",
-      })),
-    }));
+    .get(getAllOriginsUrl(`https://itunes.apple.com/lookup?id=${podcastId}`))
+    .then(({ data: { results } }) => results[0].feedUrl);
 };
 
 export default getLookup;

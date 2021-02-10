@@ -1,7 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import "./Podcast.scss";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import { getTopPodcast } from "../api/apiTopPodcasts";
+import getLookup from "../api/apiLookup";
+import getFeed from "../api/apiFeed";
 
 const EpisodesView = lazy(() => import("./components/Episodes/Episodes"));
 
@@ -14,6 +15,7 @@ export default class Podcast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      feeddURL: null,
       podcast: null,
     };
   }
@@ -30,7 +32,12 @@ export default class Podcast extends React.Component {
       },
     } = this.props;
 
-    await getTopPodcast(podcastId).then((podcast) => {
+    await getLookup(podcastId).then((feedUrl) => {
+      this.setState({ feedUrl });
+    });
+
+    await getFeed(this.state.feedUrl).then((podcast) => {
+      debugger;
       this.setState({ podcast });
     });
   }
@@ -54,7 +61,12 @@ export default class Podcast extends React.Component {
           </div>
           <div className="podcast__summary">
             <p className="podcast__desc-title">Description:</p>
-            <p className="podcast__desc">{this.state.podcast.summary}</p>
+            <p
+              className="podcast__desc"
+              dangerouslySetInnerHTML={{
+                __html: this.state.podcast.description,
+              }}
+            />
           </div>
         </article>
         <article className="podcast__route">
@@ -66,7 +78,7 @@ export default class Podcast extends React.Component {
                   render={(props) => (
                     <EpisodesView
                       {...props}
-                      podcastId={this.state.podcast.id}
+                      episodes={this.state.podcast.episodes}
                     />
                   )}
                 />

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Episodes.scss";
-import getLookup from "../../../api/apiLookup";
-import { dateToString } from "@/utils/date";
+import { dateToString, timeToString } from "@/utils/dateTime";
 
 /**
  * View responsible of displaying episodes overview.
@@ -10,24 +9,12 @@ export default class Episodes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      episodes: [],
+      episodes: this.props.episodes || [],
     };
   }
 
-  /**
-   * React hook executed after mounting the component.
-   *
-   * It's responsible for getting podcast information.
-   */
-  async componentDidMount() {
-    await getLookup(this.props.podcastId).then(({ count, episodes }) => {
-      this.setState({ count, episodes });
-    });
-  }
-
   render() {
-    if (!this.props.podcastId || !this.state.episodes.length) {
+    if (!this.state.episodes.length) {
       return <h2 className="episodes__not-found">Episodes not found</h2>;
     }
 
@@ -35,7 +22,7 @@ export default class Episodes extends React.Component {
       <section className="episodes">
         {/** Count */}
         <article className="episodes__count">
-          Episodes: {this.state.count}
+          Episodes: {this.state.episodes.length}
         </article>
 
         {/** Table */}
@@ -51,15 +38,17 @@ export default class Episodes extends React.Component {
             <tbody>
               {this.state.episodes.map((episode) => (
                 <tr className="episodes__row" key={episode.id}>
-                  <td className="episodes__cell" width="60%">
+                  <td className="episodes__cell">
                     <a className="episodes__link" href="/">
                       {episode.title}
                     </a>
                   </td>
-                  <td className="episodes__cell">
+                  <td className="episodes__cell" width="100px">
                     {dateToString(episode.date)}
                   </td>
-                  <td className="episodes__cell">{episode.duration}</td>
+                  <td className="episodes__cell" width="100px">
+                    {timeToString(episode.duration)}
+                  </td>
                 </tr>
               ))}
             </tbody>

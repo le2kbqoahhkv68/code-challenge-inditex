@@ -101,3 +101,7 @@ Route components are **loaded lazily**, increasing the load speed without unnece
 ### CORS
 
 Remember to use a plugin to allow CORS requests or the application won't work.
+
+## TO-DO
+
+- Use 3rd party library to check get object properties to avoid unexpected undefined access. I.e. `get` function from Lodash.

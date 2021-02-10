@@ -1,7 +1,7 @@
 import { act } from "react-dom/test-utils";
 import { render, unmountComponentAtNode } from "react-dom";
 import Podcast from "./Podcast";
-import getTopPodcastsStub from "../api/stubs/getTopPodcasts.stub";
+import getLookupStub from "../api/stubs/getLookup.stub";
 import axios from "axios";
 
 let container = null;
@@ -19,9 +19,10 @@ afterEach(() => {
 
 jest.mock("axios");
 
-describe("Podcasts component test", () => {
+describe("Podcast component test", () => {
   it("renders podcast info correctly", async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve(getTopPodcastsStub));
+    axios.get.mockImplementationOnce(() => Promise.resolve(getLookupStub));
+    axios.get.mockImplementationOnce(() => Promise.resolve(null));
 
     await act(async () => {
       render(
@@ -48,7 +49,7 @@ describe("Podcasts component test", () => {
   });
 
   it("renders not found message", async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve(getTopPodcastsStub));
+    axios.get.mockImplementationOnce(() => Promise.resolve(getLookupStub));
 
     await act(async () => {
       render(

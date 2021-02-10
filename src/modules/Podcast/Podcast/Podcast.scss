@@ -1,12 +1,15 @@
 .podcast {
   display: flex;
   font-size: 1rem;
+  $info-max-width: 300px;
 
   &__info {
     box-shadow: $box-shadow-default;
+    box-sizing: border-box;
     border-radius: $border-radius-default;
-    max-width: 300px;
+    max-width: $info-max-width;
     padding: 1em;
+    position: fixed;
 
     & > * ~ * {
       border-top: 1px solid $color-black-01;
@@ -49,6 +52,6 @@
 
   &__route {
     flex: 1;
-    margin-left: 60px;
+    margin-left: calc(60px + #{$info-max-width});
   }
 }
