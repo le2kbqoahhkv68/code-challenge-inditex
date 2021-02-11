@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosGet from "@/modules/Podcast/api/core/http";
 import { xmlToJson } from "@/utils/xml";
 import { getAllOriginsUrl } from "@/utils/cors";
 
@@ -24,7 +24,7 @@ function episodesMap(episode) {
  *
  */
 const getFeed = function (url) {
-  return axios.get(getAllOriginsUrl(url)).then(async ({ data }) => {
+  return axiosGet(getAllOriginsUrl(url)).then(async ({ data }) => {
     if (!data) return {};
     const rssData = xmlToJson(data);
     const podcastData = rssData.rss.channel[0];

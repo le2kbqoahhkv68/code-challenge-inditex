@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosGet from "@/modules/Podcast/api/core/http";
 
 /**
  * This function could be considered as an adaptar between the backend and
@@ -9,21 +9,22 @@ import axios from "axios";
  * @returns podcast[]
  */
 export const getTopPodcasts = function () {
-  return axios
-    .get(
-      "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
-    )
-    .then(({ data }) =>
-      data?.feed?.entry.map((e) => {
-        return {
-          id: e?.id?.attributes?.["im:id"],
-          title: e?.title?.label || "",
-          author: e["im:artist"]?.label || "",
-          img: e["im:image"][2]?.label || "",
-          summary: e.summary?.label || "",
-        };
-      })
-    );
+  return axiosGet(
+    "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json",
+    {
+      forceCache: true,
+    }
+  ).then(({ data }) =>
+    data?.feed?.entry.map((e) => {
+      return {
+        id: e?.id?.attributes?.["im:id"],
+        title: e?.title?.label || "",
+        author: e["im:artist"]?.label || "",
+        img: e["im:image"][2]?.label || "",
+        summary: e.summary?.label || "",
+      };
+    })
+  );
 };
 
 /**
