@@ -19,6 +19,12 @@ const routes = [
     exact: true,
     component: PodcastView,
   },
+  {
+    path: "/podcast/:podcastId/episode/:episodeId",
+    name: "Episode",
+    exact: true,
+    component: PodcastView,
+  },
 ];
 
 export default routes;

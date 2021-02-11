@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import "./Podcast.scss";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import EpisodeView from "./components/Episode/Episode";
 import getLookup from "../api/apiLookup";
 import getFeed from "../api/apiFeed";
 
@@ -46,6 +47,10 @@ export default class Podcast extends React.Component {
       return <h2 className="podcast__not-found">Podcast not found</h2>;
     }
 
+    const episode = this.state.podcast.episodes.find(
+      (episode) => episode.id === this.props.match.params.episodeId
+    );
+
     return (
       <section className="podcast">
         <article className="podcast__info">
@@ -72,6 +77,12 @@ export default class Podcast extends React.Component {
           <Router>
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
+                <Route
+                  path={`*/episode/:episodeId`}
+                  render={(props) => (
+                    <EpisodeView {...props} episode={episode} />
+                  )}
+                />
                 <Route
                   path="*"
                   render={(props) => (

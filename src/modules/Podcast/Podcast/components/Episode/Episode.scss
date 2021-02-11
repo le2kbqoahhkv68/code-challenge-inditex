@@ -1,0 +1,27 @@
+.episode {
+  font-size: 1rem;
+  border-radius: $border-radius-default;
+  box-shadow: $box-shadow-default;
+  padding: 1.5em;
+
+  &__title {
+    font-size: 1.3em;
+    margin: 0;
+  }
+
+  &__description {
+    color: $color-black-02;
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 1em 0 1.5em 0;
+  }
+
+  &__player {
+    padding-top: 1.25em;
+    border-top: 1px solid $color-black-01;
+  }
+
+  &__audio {
+    width: 100%;
+  }
+}

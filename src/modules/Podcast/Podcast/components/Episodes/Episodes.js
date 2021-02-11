@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Episodes.scss";
 import { dateToString, timeToString } from "@/utils/dateTime";
 
@@ -39,7 +40,10 @@ export default class Episodes extends React.Component {
               {this.state.episodes.map((episode) => (
                 <tr className="episodes__row" key={episode.id}>
                   <td className="episodes__cell">
-                    <a className="episodes__link" href="/">
+                    <a
+                      className="episodes__link"
+                      href={`${this.props.match.url}/episode/${episode.id}`}
+                    >
                       {episode.title}
                     </a>
                   </td>

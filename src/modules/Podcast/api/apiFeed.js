@@ -7,7 +7,12 @@ function episodesMap(episode) {
     id: episode.guid[0]._,
     title: episode.title,
     date: episode.pubDate,
+    description: episode.description,
     duration: episode["itunes:duration"][0],
+    media: {
+      url: episode["media:content"][0].$.url,
+      type: episode["media:content"][0].$.type,
+    },
   };
 }
 
