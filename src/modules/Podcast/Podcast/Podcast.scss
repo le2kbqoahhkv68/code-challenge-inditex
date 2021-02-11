@@ -1,0 +1,56 @@
+.podcast {
+  display: flex;
+  font-size: 1rem;
+
+  &__info {
+    box-shadow: $box-shadow-default;
+    box-sizing: border-box;
+    border-radius: $border-radius-default;
+    height: 100%;
+    max-width: 300px;
+    padding: 1em;
+
+    & > * ~ * {
+      border-top: 1px solid $color-black-01;
+      padding: 1em 0.5em;
+      margin-top: 1em;
+    }
+  }
+
+  &__img {
+    border: 1px solid $color-black-01;
+    border-radius: $border-radius-default;
+    display: block;
+    object-fit: cover;
+    margin: 1em auto 2em auto;
+    height: 200px;
+    width: 200px;
+  }
+
+  &__title {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  &__author {
+    color: $color-black-03;
+    font-style: italic;
+    margin-top: 0.25em;
+  }
+
+  &__desc-title {
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  &__desc {
+    font-style: italic;
+    font-weight: 300;
+    margin-top: 0.75em;
+  }
+
+  &__route {
+    flex: 1;
+    margin-left: 60px;
+  }
+}

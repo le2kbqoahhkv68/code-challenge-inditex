@@ -12,6 +12,10 @@ p {
   margin: 0;
 }
 
+label {
+  display: none;
+}
+
 input {
   transition: border-color $duration-base;
 
@@ -19,4 +23,8 @@ input {
     outline: none;
     border-color: $color-blue;
   }
+}
+
+a {
+  text-decoration: none;
 }
