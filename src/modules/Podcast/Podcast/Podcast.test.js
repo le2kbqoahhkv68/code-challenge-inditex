@@ -1,10 +1,7 @@
 import { act } from "react-dom/test-utils";
 import { render, unmountComponentAtNode } from "react-dom";
 import Podcast from "./Podcast";
-import getLookupStub from "../api/stubs/getLookup.stub";
 import getFeedStub from "../api/stubs/getFeed.stub";
-import axios from "axios";
-import getFeed from "../api/apiFeed";
 
 let container = null;
 
@@ -24,7 +21,13 @@ jest.mock("axios");
 describe("Podcast component test", () => {
   it("renders podcast info correctly", async () => {
     await act(async () => {
-      render(<Podcast podcast={getFeedStub} />, container);
+      render(
+        <Podcast
+          podcast={getFeedStub}
+          match={{ params: { podcastId: "fake123" } }}
+        />,
+        container
+      );
     });
 
     expect(container.querySelector(".podcast__img").getAttribute("src")).toBe(

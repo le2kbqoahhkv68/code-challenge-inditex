@@ -15,7 +15,9 @@ function App() {
       <section className="App">
         {/** Header */}
         <header className="app__header">
-          <h1 className="app__title">Podcaster</h1>
+          <a href="/">
+            <h1 className="app__title">Podcaster</h1>
+          </a>
         </header>
 
         {/** Routes */}

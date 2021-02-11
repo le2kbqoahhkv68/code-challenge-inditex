@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import "./Episodes.scss";
 import { dateToString, timeToString } from "@/utils/dateTime";
 

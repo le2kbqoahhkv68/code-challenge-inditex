@@ -60,13 +60,17 @@ export default class Podcast extends React.Component {
     return (
       <section className="podcast">
         <article className="podcast__info">
-          <img
-            className="podcast__img"
-            alt={this.state.podcast.title}
-            src={this.state.podcast.img}
-          />
+          <a href={`/podcast/${this.props.match.params.podcastId}`}>
+            <img
+              className="podcast__img"
+              alt={this.state.podcast.title}
+              src={this.state.podcast.img}
+            />
+          </a>
           <div className="podcast__id">
-            <p className="podcast__title">{this.state.podcast.title}</p>
+            <a href={`/podcast/${this.props.match?.params.podcastId}`}>
+              <p className="podcast__title">{this.state.podcast.title}</p>
+            </a>
             <p className="podcast__author">by {this.state.podcast.author}</p>
           </div>
           <div className="podcast__summary">

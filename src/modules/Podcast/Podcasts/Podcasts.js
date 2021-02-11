@@ -86,36 +86,38 @@ export default class PodcastsView extends React.Component {
     );
 
     return (
-      <section className="podcasts">
-        {/** Filter */}
-        <article className="podcasts__filter">
-          <span className="podcasts__count">{filteredPodcasts.length}</span>
-          <input
-            type="text"
-            onChange={this.handleFilterChange}
-            value={this.state.filter}
-            className="podcasts__search-box"
-            name="filter"
-            aria-label="Filter"
-            placeholder="Filter podcasts..."
-          />
-        </article>
+      <Router>
+        <section className="podcasts">
+          {/** Filter */}
+          <article className="podcasts__filter">
+            <span className="podcasts__count">{filteredPodcasts.length}</span>
+            <input
+              type="text"
+              onChange={this.handleFilterChange}
+              value={this.state.filter}
+              className="podcasts__search-box"
+              name="filter"
+              aria-label="Filter"
+              placeholder="Filter podcasts..."
+            />
+          </article>
 
-        {/** Results */}
-        <ul className="podcasts__results">
-          {filteredPodcasts.map((topPodcast) => (
-            <li className="podcasts__result" key={topPodcast.id}>
-              <a href={`/podcast/${topPodcast.id}`}>
-                <Result
-                  title={topPodcast.title}
-                  author={topPodcast.author}
-                  img={topPodcast.img}
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
+          {/** Results */}
+          <ul className="podcasts__results">
+            {filteredPodcasts.map((topPodcast) => (
+              <li className="podcasts__result" key={topPodcast.id}>
+                <a href={`/podcast/${topPodcast.id}`}>
+                  <Result
+                    title={topPodcast.title}
+                    author={topPodcast.author}
+                    img={topPodcast.img}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Router>
     );
   }
 }
