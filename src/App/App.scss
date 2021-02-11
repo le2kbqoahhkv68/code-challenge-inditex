@@ -1,0 +1,31 @@
+html,
+body {
+  font-family: "SourceSansPro";
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 3rem;
+}
+
+.app {
+  &__header {
+    border-bottom: 1px solid $color-black-01;
+    padding: 0.75em 0;
+    margin-bottom: 2em;
+  }
+
+  &__title {
+    color: $color-blue;
+    font-size: 2em;
+    font-weight: 500;
+    margin: 0;
+  }
+}

@@ -1,22 +1,2 @@
 /** Post-CSS normalize */
 @import-normalize;
-
-/** Custom rules added */
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  margin: 0;
-}
-
-input {
-  transition: border-color $duration-base;
-
-  &:focus {
-    outline: none;
-    border-color: $color-blue;
-  }
-}

@@ -4,6 +4,7 @@ import { routes } from "../routes";
 
 /** Global styles */
 import "@/assets/styles/app/index.scss";
+import "./App.scss";
 
 /** Components */
 import { ErrorBoundary } from "../components/ErrorBoundary/ErrorBoundary.js";
@@ -11,8 +12,16 @@ import { ErrorBoundary } from "../components/ErrorBoundary/ErrorBoundary.js";
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
-        <section className="App">
+      <section className="App">
+        {/** Header */}
+        <header className="app__header">
+          <a href="/">
+            <h1 className="app__title">Podcaster</h1>
+          </a>
+        </header>
+
+        {/** Routes */}
+        <Router>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               {routes.map((route) => (
@@ -25,8 +34,8 @@ function App() {
               ))}
             </Switch>
           </Suspense>
-        </section>
-      </Router>
+        </Router>
+      </section>
     </ErrorBoundary>
   );
 }

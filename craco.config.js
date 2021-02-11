@@ -12,9 +12,10 @@ module.exports = {
       plugin: sassResourcesLoader,
       options: {
         resources: [
+          "./src/assets/styles/vars/colors.scss",
           "./src/assets/styles/vars/animations.scss",
           "./src/assets/styles/vars/borders.scss",
-          "./src/assets/styles/vars/colors.scss",
+          "./src/assets/styles/vars/box-shadow.scss",
         ],
       },
     },

@@ -1,6 +1,6 @@
 {
   "name": "idx-z-david-manso",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
@@ -21,7 +21,8 @@
     "prettier": "^2.2.1",
     "react-router-dom": "^5.2.0",
     "sass-resources-loader": "^2.1.1",
-    "source-map-explorer": "^2.5.2"
+    "source-map-explorer": "^2.5.2",
+    "xml2js": "^0.4.23"
   },
   "scripts": {
     "start": "craco start",
@@ -57,6 +58,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
     }
   }
 }
