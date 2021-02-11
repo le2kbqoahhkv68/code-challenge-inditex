@@ -11,7 +11,7 @@ import { getAllOriginsUrl } from "@/utils/cors";
 const getLookup = function (podcastId) {
   return axios
     .get(getAllOriginsUrl(`https://itunes.apple.com/lookup?id=${podcastId}`))
-    .then(({ data: { results } }) => results[0].feedUrl);
+    .then(({ data: { results } }) => results[0]?.feedUrl);
 };
 
 export default getLookup;

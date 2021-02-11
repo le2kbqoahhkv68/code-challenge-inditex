@@ -10,8 +10,8 @@ function episodesMap(episode) {
     description: episode.description,
     duration: episode["itunes:duration"][0],
     media: {
-      url: episode["media:content"][0].$.url,
-      type: episode["media:content"][0].$.type,
+      url: episode.enclosure[0].$.url,
+      type: episode.enclosure[0].$.type,
     },
   };
 }
@@ -25,6 +25,7 @@ function episodesMap(episode) {
  */
 const getFeed = function (url) {
   return axios.get(getAllOriginsUrl(url)).then(async ({ data }) => {
+    if (!data) return {};
     const rssData = xmlToJson(data);
     const podcastData = rssData.rss.channel[0];
     return {

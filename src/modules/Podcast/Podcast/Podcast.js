@@ -16,7 +16,7 @@ export default class Podcast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feeddURL: null,
+      feedURL: null,
       podcast: null,
     };
   }
@@ -27,6 +27,12 @@ export default class Podcast extends React.Component {
    * It's responsible for getting podcast information.
    */
   async componentDidMount() {
+    /* Specially for testing purposes */
+    if (this.props.podcast) {
+      this.setState({ podcast: this.props.podcast });
+      return;
+    }
+
     const {
       match: {
         params: { podcastId },
@@ -40,15 +46,15 @@ export default class Podcast extends React.Component {
     await getFeed(this.state.feedUrl).then((podcast) => {
       this.setState({ podcast });
     });
+
+    this.setState({ loaded: true });
   }
 
   render() {
-    if (!this.state.podcast) {
-      return <h2 className="podcast__not-found">Podcast not found</h2>;
-    }
+    if (!this.state.podcast) return null;
 
     const episode = this.state.podcast.episodes.find(
-      (episode) => episode.id === this.props.match.params.episodeId
+      (episode) => episode.id === this.props.match?.params?.episodeId
     );
 
     return (

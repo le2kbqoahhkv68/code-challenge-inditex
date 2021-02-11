@@ -8,9 +8,7 @@ export default class Episode extends React.Component {
   render() {
     const { episode } = this.props;
 
-    if (!episode) {
-      return <h2 className="episode__not-found">Episode not found</h2>;
-    }
+    if (!episode) return null;
 
     return (
       <section className="episode">
