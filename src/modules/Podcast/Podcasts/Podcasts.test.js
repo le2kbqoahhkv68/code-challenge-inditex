@@ -1,7 +1,7 @@
 import { act } from "react-dom/test-utils";
 import { render, unmountComponentAtNode } from "react-dom";
 import Podcasts from "./Podcasts";
-import getTopPodcastsStub from "../api/stubs/getTopPodcasts.stub";
+import getTopPodcastsStub from "./api/getTopPodcasts.stub";
 import axios from "axios";
 
 let container = null;
