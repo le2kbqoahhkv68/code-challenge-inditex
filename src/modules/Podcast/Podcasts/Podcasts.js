@@ -90,13 +90,16 @@ export default class PodcastsView extends React.Component {
         {/** Filter */}
         <article className="podcasts__filter">
           <span className="podcasts__count">{filteredPodcasts.length}</span>
+          <label for="filter">Filter podcasts</label>
           <input
             type="text"
             onChange={this.handleFilterChange}
             value={this.state.filter}
             className="podcasts__search-box"
+            name="filter"
+            aria-label="Filter"
             placeholder="Filter podcasts..."
-          ></input>
+          />
         </article>
 
         {/** Results */}

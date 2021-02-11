@@ -37,7 +37,6 @@ export default class Podcast extends React.Component {
     });
 
     await getFeed(this.state.feedUrl).then((podcast) => {
-      debugger;
       this.setState({ podcast });
     });
   }
@@ -52,7 +51,7 @@ export default class Podcast extends React.Component {
         <article className="podcast__info">
           <img
             className="podcast__img"
-            alt="Podcast"
+            alt={this.state.podcast.title}
             src={this.state.podcast.img}
           />
           <div className="podcast__id">
