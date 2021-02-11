@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import "./Podcast.scss";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import EpisodeView from "./components/Episode/Episode";
 import getLookup from "../api/apiLookup";
 import getFeed from "../api/apiFeed";
 
@@ -15,7 +16,7 @@ export default class Podcast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      feeddURL: null,
+      feedURL: null,
       podcast: null,
     };
   }
@@ -26,6 +27,12 @@ export default class Podcast extends React.Component {
    * It's responsible for getting podcast information.
    */
   async componentDidMount() {
+    /* Specially for testing purposes */
+    if (this.props.podcast) {
+      this.setState({ podcast: this.props.podcast });
+      return;
+    }
+
     const {
       match: {
         params: { podcastId },
@@ -39,23 +46,31 @@ export default class Podcast extends React.Component {
     await getFeed(this.state.feedUrl).then((podcast) => {
       this.setState({ podcast });
     });
+
+    this.setState({ loaded: true });
   }
 
   render() {
-    if (!this.state.podcast) {
-      return <h2 className="podcast__not-found">Podcast not found</h2>;
-    }
+    if (!this.state.podcast) return null;
+
+    const episode = this.state.podcast.episodes.find(
+      (episode) => episode.id === this.props.match?.params?.episodeId
+    );
 
     return (
       <section className="podcast">
         <article className="podcast__info">
-          <img
-            className="podcast__img"
-            alt={this.state.podcast.title}
-            src={this.state.podcast.img}
-          />
+          <a href={`/podcast/${this.props.match.params.podcastId}`}>
+            <img
+              className="podcast__img"
+              alt={this.state.podcast.title}
+              src={this.state.podcast.img}
+            />
+          </a>
           <div className="podcast__id">
-            <p className="podcast__title">{this.state.podcast.title}</p>
+            <a href={`/podcast/${this.props.match?.params.podcastId}`}>
+              <p className="podcast__title">{this.state.podcast.title}</p>
+            </a>
             <p className="podcast__author">by {this.state.podcast.author}</p>
           </div>
           <div className="podcast__summary">
@@ -72,6 +87,12 @@ export default class Podcast extends React.Component {
           <Router>
             <Suspense fallback={<div>Loading...</div>}>
               <Switch>
+                <Route
+                  path={`*/episode/:episodeId`}
+                  render={(props) => (
+                    <EpisodeView {...props} episode={episode} />
+                  )}
+                />
                 <Route
                   path="*"
                   render={(props) => (
