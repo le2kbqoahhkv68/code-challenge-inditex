@@ -97,3 +97,11 @@ Another way to split a module is by the main resource which points to: / (that c
 All routes from modules are imported within routes.js file. I prefer to keep them in a separated file.
 
 Route components are **loaded lazily**, increasing the load speed without unnecesary imports until they are.
+
+### CORS
+
+Remember to use a plugin to allow CORS requests or the application won't work.
+
+## TO-DO
+
+- Use 3rd party library to check get object properties to avoid unexpected undefined access. I.e. `get` function from Lodash.

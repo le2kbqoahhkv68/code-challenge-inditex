@@ -59,7 +59,7 @@
     background-color: $color-white;
     border-radius: $border-radius-default;
     box-sizing: border-box;
-    box-shadow: rgba($color-black-02, 0.2) 0px 2px 8px 0px;
+    box-shadow: $box-shadow-default;
     flex-direction: column;
     height: 160px;
     justify-content: flex-end;

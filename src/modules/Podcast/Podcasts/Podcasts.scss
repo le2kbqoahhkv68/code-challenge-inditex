@@ -1,19 +1,6 @@
 .podcasts {
   font-size: 1rem;
 
-  &__header {
-    border-bottom: 1px solid $color-black-01;
-    padding: 0.75em 0;
-    margin-bottom: 2em;
-  }
-
-  &__title {
-    color: $color-blue;
-    font-size: 2em;
-    font-weight: 500;
-    margin: 0;
-  }
-
   &__results {
     display: flex;
     flex-wrap: wrap;
